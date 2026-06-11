@@ -12,3 +12,7 @@ output "public_ip_id" {
   description = "The ID of the created public IP address."
   value       = azurerm_public_ip.linuxboxpip.id
 }
+
+output "public_ip_address" {
+  value = azurerm_public_ip.linuxboxpip.ip_address
+}

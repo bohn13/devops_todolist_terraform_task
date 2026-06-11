@@ -1,3 +1,4 @@
-output "public_ip_address" {
-  value = azurerm_public_ip.linuxboxpip.ip_address
+output "public_ip_vm" {
+  value = azurerm_linux_virtual_machine.vm.public_ip_address
+  description = "The public IP address of the virtual machine."
 }
