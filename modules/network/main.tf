@@ -70,5 +70,5 @@ resource "azurerm_public_ip" "linuxboxpip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
-  domain_name_label = "${var.dns_label}${random_integer.dns_suffix.result}"
+  domain_name_label   = "${var.dns_label}${random_integer.dns_suffix.result}"
 }

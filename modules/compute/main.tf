@@ -23,7 +23,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_ssh_key {
     username   = var.admin_username
-    public_key = file(var.ssh_key_public)
+    public_key = var.ssh_key_public
   }
 
   os_disk {
@@ -31,12 +31,12 @@ resource "azurerm_linux_virtual_machine" "vm" {
     storage_account_type = "Standard_LRS"
   }
 
-    source_image_reference {
+  source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts"
     version   = "latest"
-    }
+  }
 }
 
 resource "azurerm_virtual_machine_extension" "app" {
@@ -47,7 +47,7 @@ resource "azurerm_virtual_machine_extension" "app" {
   type_handler_version = "2.0"
 
   settings = jsonencode({
-    fileUris = [var.script_url]
+    fileUris         = [var.script_url]
     commandToExecute = "bash install-app.sh"
   })
 }
